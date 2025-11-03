@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VARSE - Redefine Your Reality</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            letter-spacing: 4px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #888;
+        }
+
+        .cart-icon {
+            font-size: 20px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cart-icon:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 120px;
+            font-weight: 900;
+            letter-spacing: 15px;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 24px;
+            letter-spacing: 8px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .cta-button {
+            padding: 18px 50px;
+            background: #fff;
+            color: #000;
+            border: none;
+            font-size: 14px;
+            letter-spacing: 3px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            background: #000;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        /* Products Grid */
+        .products-section {
+            padding: 100px 50px;
+            background: #0a0a0a;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 48px;
+            letter-spacing: 8px;
+            margin-bottom: 80px;
+            font-weight: 900;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: #111;
+            transition: transform 0.4s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #222 0%, #111 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: #333;
+            transition: all 0.4s;
+        }
+
+        .product-card:hover .product-image {
+            filter: brightness(1.2);
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .product-price {
+            font-size: 16px;
+            color: #888;
+            letter-spacing: 2px;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 150px 50px;
+            background: #000;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 64px;
+            letter-spacing: 10px;
+            margin-bottom: 40px;
+            font-weight: 900;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 2;
+            letter-spacing: 2px;
+            color: #aaa;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 50px;
+            background: #0a0a0a;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #888;
+        }
+
+        .footer-text {
+            letter-spacing: 3px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 60px;
+                letter-spacing: 8px;
+            }
+
+            .hero p {
+                font-size: 16px;
+                letter-spacing: 4px;
+            }
+
+            nav {
+                padding: 20px 30px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 36px;
+                letter-spacing: 4px;
+            }
+
+            .about-content h2 {
+                font-size: 42px;
+                letter-spacing: 6px;
+            }
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 100px 50px;
+            background: #0a0a0a;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 48px;
+            letter-spacing: 8px;
+            margin-bottom: 30px;
+            font-weight: 900;
+        }
+
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 18px 30px;
+            background: #111;
+            border: 1px solid #333;
+            color: #fff;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .newsletter-button {
+            padding: 18px 40px;
+            background: #fff;
+            color: #000;
+            border: none;
+            font-size: 14px;
+            letter-spacing: 3px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+
+        .newsletter-button:hover {
+            background: #000;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">VARSE</div>
+        <ul class="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#shop">SHOP</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+        <div class="cart-icon">🛒</div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>VARSE</h1>
+            <p>REDEFINE YOUR REALITY</p>
+            <button class="cta-button" onclick="document.getElementById('shop').scrollIntoView({behavior: 'smooth'})">
+                EXPLORE COLLECTION
+            </button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="shop">
+        <h2 class="section-title">LATEST DROPS</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">👕</div>
+                <div class="product-info">
+                    <div class="product-name">VOID TEE</div>
+                    <div class="product-price">$65.00</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🧥</div>
+                <div class="product-info">
+                    <div class="product-name">PHANTOM HOODIE</div>
+                    <div class="product-price">$120.00</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">👖</div>
+                <div class="product-info">
+                    <div class="product-name">CARGO PANTS</div>
+                    <div class="product-price">$95.00</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🧢</div>
+                <div class="product-info">
+                    <div class="product-name">SHADOW CAP</div>
+                    <div class="product-price">$45.00</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">👕</div>
+                <div class="product-info">
+                    <div class="product-name">ECLIPSE LONG SLEEVE</div>
+                    <div class="product-price">$75.00</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🧥</div>
+                <div class="product-info">
+                    <div class="product-name">TECH JACKET</div>
+                    <div class="product-price">$180.00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <h2>THE VERSE</h2>
+            <p>
+                VARSE is more than clothing—it's a movement. Born from the intersection of street culture 
+                and technical innovation, we create pieces that challenge convention and embrace the future. 
+                Every design tells a story of rebellion, individuality, and the constant pursuit of evolution. 
+                Join us in redefining what streetwear means.
+            </p>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="contact">
+        <h2>STAY CONNECTED</h2>
+        <p style="color: #888; letter-spacing: 2px; margin-bottom: 40px;">
+            BE THE FIRST TO KNOW ABOUT NEW DROPS
+        </p>
+        <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+            <input type="email" class="newsletter-input" placeholder="ENTER YOUR EMAIL" required>
+            <button type="submit" class="newsletter-button">SUBSCRIBE</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#">📷</a>
+                <a href="#">🐦</a>
+                <a href="#">📘</a>
+            </div>
+            <p class="footer-text">© 2025 VARSE. ALL RIGHTS RESERVED.</p>
+        </div>
+    </footer>
+
+    <script>
+        function handleNewsletter(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input').value;
+            alert(`Thanks for subscribing! We'll keep ${email} updated with our latest drops.`);
+            e.target.reset();
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                nav.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                nav.style.background = 'rgba(0, 0, 0, 0.8)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
